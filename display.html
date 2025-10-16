@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="hidden">HIDE car</button><br>
+    <button id="display">SHOW car</button><br>
+    <button id="hiddenb">HIDE bike</button><br>
+    <button id="displayb">SHOW bike</button><br>
+    <img id="car" src="download.png" alt="">
+    <img  id="bike" src="images.jpg" alt="">
+
+    <button id="addItemsBtn">Add Items</button>
+<ul id="list"></ul>
+
+<script>
+    let btnhide=document.getElementById("hidden");
+     let btnshow=document.getElementById("display");
+     let btnhideb=document.getElementById("hiddenb");
+     let btnshowb=document.getElementById("displayb");
+    let car =document.getElementById("car");
+    let bike=document.getElementById("bike");
+
+btnhide.addEventListener('click',function(){
+    car.style.display="none";
+});
+btnshow.addEventListener('click',function(){
+    car.style.display="block";
+});
+btnhideb.addEventListener('click',function(){
+    bike.style.display="none";
+});
+btnshowb.addEventListener('click',function(){
+    bike.style.display="block";
+});
+
+let ul=document.getElementById("list");
+document.getElementById("addItemsBtn").addEventListener('click',function(){
+    let li =document.createElement("li");
+    li.textContent="this is new list";
+    li.className="newlist";
+    ul.appendChild(li);
+
+})
+
+</script>
+</body>
+</html>

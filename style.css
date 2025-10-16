@@ -1,0 +1,65 @@
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 200vh;
+        margin: 0;
+    }
+
+    #countlabel {
+        font-size: 5rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+        color: #333;
+    }
+
+    #btngroup {
+
+        display: flex;
+        gap: 20px;
+    }
+
+    button {
+        border: 2px solid black;
+         background-color: #ff6b6b;
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+       
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #decreasebtn {
+        
+        background-color: #ff6b6b;
+        color: white;
+    }
+
+    #decreasebtn:hover {
+        background-color: #ff4c4c;
+    }
+
+    #resetbtn {
+        background-color: #ccc;
+        color: #333;
+    }
+
+    #resetbtn:hover {
+        background-color: #bbb;
+    }
+
+    #increasebtn {
+        background-color: #4caf50;
+        color: white;
+    }
+
+    #increasebtn:hover {
+        background-color: #45a049;
+    }
+

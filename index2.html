@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="food-menu">menu
+  <ul class="category veg">veg
+    <li class="item">Paneer Butter Masala</li>
+    <li class="item">Veg Biryani</li>
+  </ul>
+
+  <ul class="category non-veg">non veg
+    <li class="item">Chicken Biryani</li>
+    <li class="item">Mutton Korma</li>
+  </ul>
+
+  <ul class="category fast-food">fast food
+    <li class="item">Burger</li>
+    <li class="item">Pizza</li>
+  </ul>
+</div>
+
+<script>
+let foodMenu = document.getElementById('food-menu');
+let categories = document.querySelectorAll('.category');
+let items = document.querySelectorAll('.item');
+
+// event bubbling 
+// items.forEach(item => {
+//   item.addEventListener('click', () => {
+//     console.log('Item clicked:', item.textContent);
+//   });
+// });
+
+
+// categories.forEach(cat => {
+//   cat.addEventListener('click', () => {
+//     console.log('Category clicked:', cat.className);
+//   });
+// });
+
+
+// foodMenu.addEventListener('click', () => {
+//   console.log('Food Menu clicked');
+// });
+
+
+//  event capturing 
+foodMenu.addEventListener('click', () => {
+  console.log('Food Menu (capturing)');
+}, { capture: true });
+
+categories.forEach(cat => {
+  cat.addEventListener('click', () => {
+    console.log('Category (capturing):', cat.className);
+  }, { capture: true });
+
+});
+
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    console.log('Item (target):', item.textContent);
+  });
+});
+
+//   foodmenu.addEventListener('click',function(el){
+//     if(el.target.classList.contains('items')){
+//         console.log("you clicked :",el.target.textContent);
+//         e.target.style.color='tomato';
+//         e.stopPropagation();   // stops event from bubbling further up
+//     }
+//   });
+
+
+
+// method chaining 
+
+
+let str = "hello";
+let result = str.toUpperCase().split("").reverse().join("")
+console.log(result);
+
+
+// setintervel and prevention 
+let count=0;
+let intervel= setInterval(function(){
+  count++;
+   console.log( count);
+  if(count==5){
+    clearInterval(intervel);
+    console.log("stooped intervel");
+  }
+},1000);
+
+// settimeout
+setTimeout(function() {
+    console.log("Hello after 7 seconds");
+}, 7000);
+
+
+
+
+// types of errors 
+
+// SyntaxError
+// console.log("Hello world";
+
+//reference error 
+// console.log(myVar); 
+
+//type error
+// let num = 5
+// num.toUpperCase(); 
+
+
+
+</script>
+</body>
+</html>

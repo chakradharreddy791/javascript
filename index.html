@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button id="mybtn">add to cart</button>
+    <label for="">enter the price</label>
+    <input id="price" type="text">
+    <p id="demo"></p>
+
+<button id="change">change</button>
+    <ul id="food-menu">
+       <li class="category veg"><span class="cat-name">Veg</span>
+           <ul id="veg-menu">
+                <li class="item veg-item">Paneer Butter Masala</li>
+                <li class="item veg-item">Veg Biryani</li>
+                <li class="item veg-item">Mixed Vegetable Curry</li>
+                <li class="item veg-item">Chole</li>
+            </ul>
+        </li>
+        <li class="category non-veg"><span class="cat-name">NON Veg</span>
+            <ul id="Nonveg-menu">
+                <li class="item non-veg-item">Chicken Biryani</li>
+                <li class="item non-veg-item">Fish Curry</li>
+                <li class="item non-veg-item">Mutton Korma</li>
+                <li class="item non-veg-item">Grilled Chicken</li>
+            </ul>
+        </li>
+        <li class="category fast-food"><span class="cat-name">Fasr food</span>
+           <ul id="fastfood-menu">
+                <li class="item fast-food-item">Burger</li>
+                <li class="item fast-food-item">Pizza</li>
+                <li class="item fast-food-item">French Fries</li>
+                <li class="item fast-food-item">Hot Dog</li>
+            </ul>
+        </li>
+    </ul>
+    <div class="emptydiv"></div>
+
+    <input class="inputtext" type="text"  placeholder="Enter a dish" >
+    <button class="append-el">append</button>
+    <button class="prepend-el">prepend</button>
+
+    <script>
+        // IIFE IIFE (Immediately Invoked Function Expression) 
+        //  When you write it, it runs automatically — no need to call it later.
+        (function () {
+            document.getElementById('mybtn').onclick = function () {
+                alert("Added to cart");
+                console.log("Button clicked");
+            };
+        })();
+        // $(document).ready(function () {
+
+        //     (function () {
+        //         $('#mybtn').click(function () {
+        //             alert("Added to cart");
+        //         });
+        //     })();
+        // });
+
+
+
+
+        // IIFE with closure to calculate price with tax dynamically
+        (function () {
+            function priceModifier(taxRate) {
+                return function (price) {
+                    return price + (price * taxRate);
+                };
+            }
+            const tax = priceModifier(0.1);
+            $("#price").on('input', function () {
+                let price = Number(this.value) || 0;
+                let finalPrice = tax(price);
+                $('#demo').html("Final Price: " + finalPrice);
+            });
+        })();
+
+
+
+        //SC0PE BEHAVIOUR
+
+        let globalvar = 'Alice'; // global variable
+        function greet() {
+            console.log("hello" + " " + globalvar);
+        }
+        greet();
+
+
+        function test() {
+            let localVar = 10;
+            console.log(localVar);
+        }
+        test();
+        // console.log(localVar);
+
+        if (true) {
+            let blockVar = 5;
+            const blockConst = 10;
+            console.log(blockVar, blockConst);
+        }
+        // console.log(blockVar);
+        // console.log(blockConst);
+
+
+// let veg = document.querySelectorAll(".veg-item");
+// veg.forEach(el => {
+//     el.style.backgroundColor = 'blue';
+// });
+// let nonVeg = document.querySelectorAll(".non-veg-item");
+// nonVeg.forEach(el => {
+//     el.style.backgroundColor = 'green';
+// });
+// let fastFood = document.querySelectorAll(".fast-food-item");
+// fastFood.forEach(el => {
+//     el.style.backgroundColor = 'red';
+// });
+
+
+
+// queryselector and queryselectorall
+
+  const heading = document.querySelector('#change');
+  heading.onclick=function(){
+ let change =document.querySelector('#food-menu');
+ change.style.backgroundColor = 'black';
+ change.style.color = 'white';
+  }
+
+
+let select = document.querySelectorAll('.item');
+ select.forEach( function(item){
+    item.addEventListener('mouseover',function(){
+        item.style.color='red';
+        item.style.fontweight='bold';
+    });
+    item.addEventListener('mouseout',function(){
+        item.style.color='';
+         item.style.fontweight='';
+    });
+
+ });
+let header= document.querySelectorAll('.cat-name');
+header[0].style.color='pink';
+header[1].style.color='purple';
+ header[2].style.color='yellow';
+
+
+// appending and prepending elements
+
+
+let  vegmenu=document.getElementById("veg-menu");
+let newitem=document.createElement('li');
+
+ let appendbtn=document.getElementsByClassName('append-el')[0];
+ appendbtn.onclick=function(){
+let text=document.getElementsByClassName('inputtext')[0].value;
+newitem.className='item veg-item';
+ newitem.textContent = text;
+    vegmenu.appendChild(newitem);
+ }
+
+//  prepend elements 
+
+ let prependbtn=document.getElementsByClassName('prepend-el')[0];
+prependbtn.onclick=function(){
+let text=document.getElementsByClassName('inputtext')[0].value;
+newitem.className='item veg-item';
+ newitem.textContent = text;
+    vegmenu.prepend(newitem);
+ }
+
+// appending a top element in the down section when scrolled
+
+ let vegMenu = document.getElementById('veg-menu');
+ let emptydiv=document.getElementsByClassName('emptydiv')[0];
+let moved = false;
+window.addEventListener('scroll', function() {
+
+  if (window.scrollY > 100 && !moved) {
+    let firstItem = vegMenu.firstElementChild;
+    emptydiv.appendChild(firstItem); 
+    moved = true; 
+  }
+});
+      </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="height:200vh">
+    <button id="clickBtn">Click Me</button>
+     <button id="dbclickBtn"> double Click Me</button>
+     <div id="hoverDiv" style="width:200px;height:100px;background:lightblue;">
+    Hover over me
+</div>
+<input type="text" id="keydownInput" placeholder="Press any key">
+<input type="text" id="keyupInput" placeholder="Release a key">
+<input type="text" id="keypressInput" placeholder="Press a key">
+<form id="demoForm">
+    Name: <input type="text" id="nameInput" placeholder="Enter your name"><br><br>
+    
+    Favorite Color: 
+    <select id="colorSelect">
+        <option value="">Select color</option>
+        <option value="Red">Red</option>
+        <option value="Blue">Blue</option>
+        <option value="Green">Green</option>
+    </select><br><br>
+
+    <button type="submit">Submit</button>
+</form>
+
+
+
+<script>
+//click
+let btn=document.getElementById("clickBtn");
+btn.addEventListener('click',()=>{
+   alert("clicked button.....");
+});
+//dblclick
+let dbclickBtn=document.getElementById("dbclickBtn");
+dbclickBtn.addEventListener('dblclick',()=>{
+    alert(" double clicked this button ......")
+})
+//mouseover
+document.getElementById("hoverDiv").addEventListener("mouseover", function() {
+    this.style.background = "lightgreen";
+    this.textContent="mouse out now ";
+});
+//mouserout
+document.getElementById("hoverDiv").addEventListener('mouseout',function(){
+    this.style.background="lightblue";
+     this.textContent="  Hover over me";
+});
+
+//keydown 
+document.getElementById("keydownInput").addEventListener('keydown',function(){
+    console.log("you entered:"+ event.key)
+})
+// keyup
+document.getElementById("keyupInput").addEventListener("keyup", function(event) {
+    console.log("Key up: " + event.key);
+});
+//keypress
+document.getElementById("keypressInput").addEventListener("keypress", function(event) {
+    console.log("Key pressed: " + event.key);
+});
+
+
+
+var nameInput = document.getElementById("nameInput");
+var colorSelect = document.getElementById("colorSelect");
+var demoForm = document.getElementById("demoForm");
+
+// Focus event
+nameInput.addEventListener("focus", function() {
+    this.style.background = "lightyellow";
+    console.log("Input focused");
+});
+
+// Blur event
+nameInput.addEventListener("blur", function() {
+    this.style.background = "white";
+    console.log("Input lost focus");
+});
+
+// // Change event
+colorSelect.addEventListener("change", function() {
+    console.log("Selected color: " + this.value);
+});
+
+// Submit event
+demoForm.addEventListener("submit", function(event) {
+    event.preventDefault(); 
+    alert("Form submitted!\nName: " + nameInput.value + "\nColor: " + colorSelect.value);
+});
+
+//window events load
+window.addEventListener("load", function() {
+    alert("Page fully loaded!");
+});
+
+window.addEventListener("resize", function() {
+    console.log("Window resized to: " + window.innerWidth + "x" + window.innerHeight);
+});
+window.addEventListener("scroll", function() {
+    console.log("Scrolled to Y: " + window.scrollY);
+});
+// window.addEventListener("unload", function() {
+//     console.log("You are leaving the page!");
+// });
+</script>
+
+</body>
+</html>

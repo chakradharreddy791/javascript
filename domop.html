@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="container">
+        <p style="color:rgb(255, 0, 0)">First Paragraph</p>
+    </div>
+
+    <button id="appendBtn">Append</button>
+    <button id="prependBtn">Prepend</button>
+    <button id="replaceBtn">Replace</button>
+    <button id="removeBtn">Remove</button>
+<script>
+    let container=document.getElementById('container');
+// appended
+document.getElementById("appendBtn").addEventListener('click',function(){
+    let newp=document.createElement("p");
+    newp.textContent="this is appended para";
+    container.appendChild(newp);
+});
+
+// prepend
+document.getElementById("prependBtn").addEventListener('click',function(){
+    let newp=document.createElement("p");
+    newp.textContent="this is prepended para";
+    container.prepend(newp);
+});
+//replace
+document.getElementById("replaceBtn").addEventListener("click", function() {
+    let newP = document.createElement("p");
+    newP.textContent = "Replaced the entire content!";
+    container.replaceChildren(newP); 
+});
+//remove
+document.getElementById("removeBtn").addEventListener("click", function() {
+    container.innerHTML = "";
+});
+
+    </script>
+</body>
+
+</html>
